@@ -2,7 +2,7 @@ import socket
 import Adafruit_DHT as dht
 
 s=socket.socket()
-s.bind(("172.16.14.36",1245))
+s.bind(("172.16.14.36",1234))
 s.listen(5)
 
 try:
