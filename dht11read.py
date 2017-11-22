@@ -1,7 +1,14 @@
-#!/usr/bin/python
-import sys
-import Adafruit_DHT
+import Adafruit_DHT as dht
+import RPi.GPIO as GPIO
+import time
 
-while True:
-	humidity, temperature = Adafruit_DHT.read_retry(11, 4)
-	print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(led,GPIO.OUT)
+
+try:
+	while True:
+		hum, temp = dht.read_retry(11,4)
+		print "Humidity = %f , Temperature = %f "%(hum,temp)
+		
+except KeyboardInterrupt:
+	GPIO.cleanup()
